@@ -1,6 +1,6 @@
-> ## About this fork
+> ## About this project
 >
-> Forked from [yashprogrammer/EnterpriseRAG_live](https://github.com/yashprogrammer/EnterpriseRAG_live) for learning and portfolio purposes. The original design and code are by **yashprogrammer**; full credit to the author. My own additions are listed below and kept separate from the original work.
+> Built by **P Akhil** as a class project, following the reference implementation by [yashprogrammer](https://github.com/yashprogrammer/EnterpriseRAG_live) (course material remains theirs). My own additions are tracked below.
 >
 > ### Why this project
 > A Kubernetes IT-operations copilot that routes each question to RAG, Text2SQL, or both, and applies the advanced RAG techniques one at a time against a deliberately noisy corpus (about 95% distractor documents) so each technique has to prove its value.
