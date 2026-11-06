@@ -1,3 +1,32 @@
+> ## About this fork
+>
+> Forked from [yashprogrammer/EnterpriseRAG_live](https://github.com/yashprogrammer/EnterpriseRAG_live) for learning and portfolio purposes. The original design and code are by **yashprogrammer**; full credit to the author. My own additions are listed below and kept separate from the original work.
+>
+> ### Why this project
+> A Kubernetes IT-operations copilot that routes each question to RAG, Text2SQL, or both, and applies the advanced RAG techniques one at a time against a deliberately noisy corpus (about 95% distractor documents) so each technique has to prove its value.
+>
+> ### Design decisions worth knowing
+> - **Retrieval stack**: hybrid dense + sparse search with reciprocal rank fusion, HyDE, cross-encoder reranking, CRAG with a web-search fallback, and a Self-RAG reflection loop.
+> - **Text2SQL with human approval**: a LangGraph `interrupt()` pauses before any generated SQL runs; SQL is SELECT-only with a keyword blocklist; a Postgres checkpointer lets the run resume.
+> - **Nine security layers** from request validation, JWT auth, rate limiting and token budgets through llm-guard injection scanning, PII redaction, spotlighting of retrieved text, and schema-validated output.
+> - **Five-tier Redis cache** (intent, embeddings, SQL, SQL results, answers).
+> - **Evaluation**: a Ragas harness with per-technique flag profiles (`eval/`) to measure what each technique adds.
+>
+> ### Known gaps I plan to address
+> - On the hybrid path, retrieval runs twice (once in `retrieve_rag`, again inside `generate_answer`); reuse the retrieved chunks.
+> - No automated unit tests yet; the Ragas harness covers answer quality only.
+> - No published eval scores; the harness exists but results are not committed.
+>
+> ### My additions (tracking)
+> - [ ] Run the Ragas profiles and commit the results table
+> - [ ] Fix the duplicate retrieval on the hybrid path
+> - [ ] Add pytest tests for routing, the SQL safety checks, and the cache
+> - [ ] Add the architecture diagram image to this README
+>
+> Items are checked off only once they are done and committed. The upstream repository has no license file, so this fork is for personal learning and portfolio use.
+
+---
+
 <div align="center">
 
 # 🔮 ADV RAG
